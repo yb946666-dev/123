@@ -1,6 +1,18 @@
-"""提醒信息生成模块。"""
+"""提醒信息和邮件发送模块。
+
+邮件功能使用 SMTP 环境变量配置，不在代码中保存邮箱密码。
+"""
 
 from __future__ import annotations
+
+import os
+import smtplib
+from email.message import EmailMessage
+from pathlib import Path
+from typing import Iterable
+
+
+REQUIRED_EMAIL_ENV = ["SMTP_HOST", "SMTP_USER", "SMTP_PASSWORD", "EMAIL_TO"]
 
 
 def build_notification(job: dict) -> str:
@@ -37,3 +49,94 @@ def build_batch_notifications(jobs: list[dict], min_score: int = 60) -> list[str
         if score >= min_score:
             notices.append(build_notification(job))
     return notices
+
+
+def build_email_body(jobs: list[dict], new_jobs: list[dict] | None = None) -> str:
+    """Build the daily digest email body."""
+
+    new_jobs = new_jobs if new_jobs is not None else jobs
+    lines = [
+        "2027届国企校招每日监控汇总",
+        "",
+        f"本次发现候选岗位/公告：{len(jobs)} 条",
+        f"其中新岗位/公告：{len(new_jobs)} 条",
+        "",
+    ]
+
+    if not new_jobs:
+        lines.append("今天暂未发现新的高匹配岗位。")
+    else:
+        for index, job in enumerate(new_jobs, start=1):
+            company = job.get("company", "待确认单位")
+            title = job.get("title", "待确认岗位")
+            score = job.get("match_score", "待评分")
+            priority = job.get("priority", "待排序")
+            url = job.get("url", "待确认")
+            reason = job.get("recommend_reason", "需要人工复核公告。")
+            lines.extend([
+                f"{index}. {company} - {title}",
+                f"   匹配评分：{score}",
+                f"   投递优先级：{priority}",
+                f"   推荐理由：{reason}",
+                f"   链接：{url}",
+                "",
+            ])
+
+    lines.extend([
+        "安全提醒：本项目不会自动投递，不会绕过验证码，不会点击最终提交。",
+        "请人工确认公告原文、岗位要求、简历版本和报名信息后再投递。",
+    ])
+    return "\n".join(lines)
+
+
+def validate_email_env() -> list[str]:
+    """Return missing SMTP environment variable names."""
+
+    return [name for name in REQUIRED_EMAIL_ENV if not os.getenv(name)]
+
+
+def send_email(subject: str, body: str, attachments: Iterable[str | Path] | None = None) -> None:
+    """Send an email through SMTP.
+
+    Required env vars: SMTP_HOST, SMTP_USER, SMTP_PASSWORD, EMAIL_TO.
+    Optional env vars: SMTP_PORT, SMTP_USE_SSL, EMAIL_FROM.
+    """
+
+    missing = validate_email_env()
+    if missing:
+        raise RuntimeError("缺少邮件环境变量：" + ", ".join(missing))
+
+    smtp_host = os.environ["SMTP_HOST"]
+    smtp_port = int(os.getenv("SMTP_PORT", "465"))
+    smtp_user = os.environ["SMTP_USER"]
+    smtp_password = os.environ["SMTP_PASSWORD"]
+    email_from = os.getenv("EMAIL_FROM", smtp_user)
+    email_to = os.environ["EMAIL_TO"]
+    use_ssl = os.getenv("SMTP_USE_SSL", "true").lower() not in {"0", "false", "no"}
+
+    message = EmailMessage()
+    message["Subject"] = subject
+    message["From"] = email_from
+    message["To"] = email_to
+    message.set_content(body)
+
+    for attachment in attachments or []:
+        path = Path(attachment)
+        if not path.exists() or not path.is_file():
+            continue
+        message.add_attachment(
+            path.read_bytes(),
+            maintype="application",
+            subtype="octet-stream",
+            filename=path.name,
+        )
+
+    if use_ssl:
+        with smtplib.SMTP_SSL(smtp_host, smtp_port) as server:
+            server.login(smtp_user, smtp_password)
+            server.send_message(message)
+    else:
+        with smtplib.SMTP(smtp_host, smtp_port) as server:
+            server.starttls()
+            server.login(smtp_user, smtp_password)
+            server.send_message(message)
