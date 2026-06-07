@@ -1,0 +1,133 @@
+companies:
+  - name: 国家电网
+    group: 国家电网有限公司
+    category: 电网
+    priority: high
+    career_url: https://zhaopin.sgcc.com.cn/
+    keywords:
+      - 通信
+      - 信息通信
+      - 电力通信
+      - 网络
+      - 运维
+
+  - name: 南方电网
+    group: 中国南方电网有限责任公司
+    category: 电网
+    priority: high
+    career_url: https://zhaopin.csg.cn/
+    keywords:
+      - 通信
+      - 信息通信
+      - 电力通信
+      - 网络
+      - 自动化
+
+  - name: 中国移动
+    group: 中国移动通信集团有限公司
+    category: 运营商
+    priority: high
+    career_url: https://job.10086.cn/
+    keywords:
+      - 网络
+      - 通信
+      - 云网
+      - 传输
+      - 无线
+      - DICT
+
+  - name: 中国电信
+    group: 中国电信集团有限公司
+    category: 运营商
+    priority: high
+    career_url: https://job.chinatelecom.com.cn/
+    keywords:
+      - 云网
+      - 网络维护
+      - 通信
+      - 产数
+      - 信息化
+
+  - name: 中国联通
+    group: 中国联合网络通信集团有限公司
+    category: 运营商
+    priority: high
+    career_url: https://zhaopin.chinaunicom.com/
+    keywords:
+      - 网络
+      - 云网
+      - 通信
+      - 数字化
+      - 网络安全
+
+  - name: 中国铁塔
+    group: 中国铁塔股份有限公司
+    category: 通信基础设施
+    priority: high
+    career_url: https://zhaopin.chinatowercom.cn/
+    keywords:
+      - 通信
+      - 基站
+      - 建设维护
+      - 能源
+      - 室分
+
+  - name: 中广核
+    group: 中国广核集团有限公司
+    category: 能源央企
+    priority: medium
+    career_url: https://www.cgnpc.com.cn/
+    keywords:
+      - 通信
+      - 信息化
+      - 网络安全
+      - 运维
+      - 自动化
+
+  - name: 中核集团
+    group: 中国核工业集团有限公司
+    category: 能源央企
+    priority: medium
+    career_url: https://www.cnnc.com.cn/
+    keywords:
+      - 通信
+      - 信息化
+      - 网络
+      - 运维
+      - 自动化
+
+  - name: 中国电科
+    group: 中国电子科技集团有限公司
+    category: 电子信息央企
+    priority: high
+    career_url: https://cetc.iguopin.com/
+    keywords:
+      - 通信
+      - 电子信息
+      - 网络安全
+      - 信号处理
+      - 测试
+
+  - name: 中国航天科技
+    group: 中国航天科技集团有限公司
+    category: 航天央企
+    priority: medium
+    career_url: https://www.spacechina.com/
+    keywords:
+      - 通信
+      - 电子信息
+      - 信息化
+      - 测试
+      - 网络
+
+  - name: 中国航天科工
+    group: 中国航天科工集团有限公司
+    category: 航天央企
+    priority: medium
+    career_url: https://casic.zhiye.com/
+    keywords:
+      - 通信
+      - 电子信息
+      - 网络安全
+      - 信息系统
+      - 测试
