@@ -72,6 +72,66 @@ companies:
       - 能源
       - 室分
 
+  - name: 中国广电
+    group: 中国广播电视网络集团有限公司
+    category: 广电通信
+    priority: medium
+    career_url: https://www.cbngc.cn/
+    keywords:
+      - 广电5G
+      - 通信
+      - 网络
+      - 信息化
+      - 运维
+
+  - name: 中国通信服务
+    group: 中国通信服务股份有限公司
+    category: 通信服务
+    priority: high
+    career_url: https://www.chinaccs.com.hk/
+    keywords:
+      - 通信工程
+      - 网络建设
+      - 系统集成
+      - 项目交付
+      - 信息化
+
+  - name: 中国电科
+    group: 中国电子科技集团有限公司
+    category: 电子信息央企
+    priority: high
+    career_url: https://cetc.iguopin.com/
+    keywords:
+      - 通信
+      - 电子信息
+      - 网络安全
+      - 信号处理
+      - 测试
+
+  - name: 中国电子
+    group: 中国电子信息产业集团有限公司
+    category: 电子信息央企
+    priority: high
+    career_url: https://campus.cec.com.cn/
+    keywords:
+      - 信创
+      - 云计算
+      - 网络安全
+      - 信息化
+      - 系统运维
+
+  - name: 中国信科
+    group: 中国信息通信科技集团有限公司
+    category: 信息通信央企
+    priority: high
+    career_url: https://campus.51job.com/cict2026/jobs.html
+    keywords:
+      - 光通信
+      - 数据通信
+      - 5G
+      - 网络产品
+      - 技术支持
+
   - name: 中广核
     group: 中国广核集团有限公司
     category: 能源央企
@@ -96,17 +156,101 @@ companies:
       - 运维
       - 自动化
 
-  - name: 中国电科
-    group: 中国电子科技集团有限公司
-    category: 电子信息央企
-    priority: high
-    career_url: https://cetc.iguopin.com/
+  - name: 国家能源集团
+    group: 国家能源投资集团有限责任公司
+    category: 能源央企
+    priority: medium
+    career_url: https://zhaopin.chnenergy.com.cn/
     keywords:
       - 通信
-      - 电子信息
+      - 信息化
+      - 网络
+      - 自动化
+      - 运维
+
+  - name: 中国华能
+    group: 中国华能集团有限公司
+    category: 电力能源央企
+    priority: medium
+    career_url: https://zhaopin.chng.com.cn/
+    keywords:
+      - 通信
+      - 信息化
+      - 电力通信
       - 网络安全
-      - 信号处理
-      - 测试
+      - 自动化
+
+  - name: 中国大唐
+    group: 中国大唐集团有限公司
+    category: 电力能源央企
+    priority: medium
+    career_url: https://www.cdtrczp.com/
+    keywords:
+      - 通信
+      - 信息化
+      - 自动化
+      - 网络
+      - 运维
+
+  - name: 中国华电
+    group: 中国华电集团有限公司
+    category: 电力能源央企
+    priority: medium
+    career_url: https://www.chd.com.cn/
+    keywords:
+      - 通信
+      - 信息化
+      - 电力通信
+      - 自动化
+      - 网络
+
+  - name: 国家电投
+    group: 国家电力投资集团有限公司
+    category: 电力能源央企
+    priority: medium
+    career_url: https://zhaopin.spic.com.cn/
+    keywords:
+      - 通信
+      - 信息化
+      - 网络
+      - 自动化
+      - 运维
+
+  - name: 三峡集团
+    group: 中国长江三峡集团有限公司
+    category: 能源央企
+    priority: medium
+    career_url: https://www.ctg.com.cn/
+    keywords:
+      - 通信
+      - 信息化
+      - 网络
+      - 自动化
+      - 运维
+
+  - name: 中国能建
+    group: 中国能源建设集团有限公司
+    category: 工程建设央企
+    priority: medium
+    career_url: https://www.ceec.net.cn/
+    keywords:
+      - 通信
+      - 信息化
+      - 弱电
+      - 项目工程
+      - 网络
+
+  - name: 中国电建
+    group: 中国电力建设集团有限公司
+    category: 工程建设央企
+    priority: medium
+    career_url: https://www.powerchina.cn/
+    keywords:
+      - 通信
+      - 信息化
+      - 弱电
+      - 电力工程
+      - 网络
 
   - name: 中国航天科技
     group: 中国航天科技集团有限公司
@@ -131,3 +275,183 @@ companies:
       - 网络安全
       - 信息系统
       - 测试
+
+  - name: 航空工业
+    group: 中国航空工业集团有限公司
+    category: 航空央企
+    priority: medium
+    career_url: https://www.avic.com/
+    keywords:
+      - 通信
+      - 电子信息
+      - 信息化
+      - 测试
+      - 网络
+
+  - name: 中国航发
+    group: 中国航空发动机集团有限公司
+    category: 航空央企
+    priority: medium
+    career_url: https://www.aecc.cn/
+    keywords:
+      - 通信
+      - 电子信息
+      - 信息化
+      - 自动化
+      - 测试
+
+  - name: 中国兵器工业
+    group: 中国兵器工业集团有限公司
+    category: 军工央企
+    priority: medium
+    career_url: https://zhaopin.nhrdc.cn/
+    keywords:
+      - 通信
+      - 电子信息
+      - 测试
+      - 信息化
+      - 网络
+
+  - name: 中国兵器装备
+    group: 中国兵器装备集团有限公司
+    category: 军工央企
+    priority: medium
+    career_url: https://www.csgc.com.cn/
+    keywords:
+      - 通信
+      - 电子信息
+      - 信息化
+      - 测试
+      - 网络
+
+  - name: 中国船舶
+    group: 中国船舶集团有限公司
+    category: 军工央企
+    priority: medium
+    career_url: https://www.cssc.net.cn/
+    keywords:
+      - 通信
+      - 电子信息
+      - 信息化
+      - 网络
+      - 测试
+
+  - name: 中国中车
+    group: 中国中车集团有限公司
+    category: 轨道交通央企
+    priority: medium
+    career_url: https://crrc.hotjob.cn/
+    keywords:
+      - 通信信号
+      - 电子信息
+      - 嵌入式
+      - 测试
+      - 信息化
+
+  - name: 中国通号
+    group: 中国铁路通信信号集团有限公司
+    category: 轨道交通央企
+    priority: high
+    career_url: https://www.crsc.cn/
+    keywords:
+      - 通信信号
+      - 轨道交通
+      - 弱电
+      - 项目工程
+      - 现场调试
+
+  - name: 中国中铁
+    group: 中国中铁股份有限公司
+    category: 基建央企
+    priority: medium
+    career_url: https://www.crecg.com/
+    keywords:
+      - 通信
+      - 弱电
+      - 信息化
+      - 项目工程
+      - 网络
+
+  - name: 中国铁建
+    group: 中国铁道建筑集团有限公司
+    category: 基建央企
+    priority: medium
+    career_url: https://www.crcc.cn/
+    keywords:
+      - 通信
+      - 弱电
+      - 信息化
+      - 网络
+      - 项目工程
+
+  - name: 中国交建
+    group: 中国交通建设集团有限公司
+    category: 基建央企
+    priority: medium
+    career_url: https://www.ccccltd.cn/
+    keywords:
+      - 通信
+      - 智慧交通
+      - 弱电
+      - 信息化
+      - 网络
+
+  - name: 招商局集团
+    group: 招商局集团有限公司
+    category: 综合央企
+    priority: low
+    career_url: https://www.cmhk.com/
+    keywords:
+      - 信息化
+      - 网络
+      - 数字化
+      - 技术支持
+      - 运维
+
+  - name: 中国邮政
+    group: 中国邮政集团有限公司
+    category: 综合央企
+    priority: medium
+    career_url: https://chinapost2026.zhaopin.com/
+    keywords:
+      - 信息技术
+      - 网络
+      - 运维
+      - 数据
+      - 信息化
+
+  - name: 中国石油
+    group: 中国石油天然气集团有限公司
+    category: 能源央企
+    priority: low
+    career_url: https://zhaopin.cnpc.com.cn/
+    keywords:
+      - 通信
+      - 信息化
+      - 网络
+      - 自动化
+      - 运维
+
+  - name: 中国石化
+    group: 中国石油化工集团有限公司
+    category: 能源央企
+    priority: low
+    career_url: https://job.sinopec.com/
+    keywords:
+      - 通信
+      - 信息化
+      - 网络
+      - 自动化
+      - 运维
+
+  - name: 中国海油
+    group: 中国海洋石油集团有限公司
+    category: 能源央企
+    priority: low
+    career_url: https://cnooc.zhaopin.com/
+    keywords:
+      - 通信
+      - 信息化
+      - 网络
+      - 自动化
+      - 运维
