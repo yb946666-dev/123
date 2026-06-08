@@ -90,7 +90,11 @@ def main() -> int:
         today = datetime.now().strftime("%Y-%m-%d")
         subject = f"国企校招每日汇总 {today}：新岗位 {len(new_jobs)} 条"
         body = build_email_body(recommended_jobs, new_jobs)
-        send_email(subject, body, attachments=[export_path])
+        refused = send_email(subject, body, attachments=[export_path])
+        if refused:
+            print("SMTP 已拒绝部分收件人：" + ", ".join(refused.keys()))
+            return 3
+        print("SMTP 已接受全部收件人。")
         print(f"邮件已发送：新岗位 {len(new_jobs)} 条，附件 {export_path}")
     else:
         print("没有新岗位，且 SEND_EMPTY_DIGEST=false，跳过邮件发送。")
