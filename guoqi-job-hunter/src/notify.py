@@ -95,24 +95,41 @@ def validate_email_env() -> list[str]:
     return [name for name in REQUIRED_EMAIL_ENV if not os.getenv(name)]
 
 
-def send_email(subject: str, body: str, attachments: Iterable[str | Path] | None = None) -> None:
+def mask_email(value: str) -> str:
+    """Mask an email address for logs while keeping enough detail for diagnosis."""
+
+    value = value.strip()
+    if "@" not in value:
+        return "格式异常：缺少 @"
+    local, domain = value.rsplit("@", 1)
+    if not local or not domain:
+        return "格式异常：邮箱不完整"
+    visible = local[:2] if len(local) >= 2 else local[:1]
+    return f"{visible}***@{domain}"
+
+
+def send_email(subject: str, body: str, attachments: Iterable[str | Path] | None = None) -> dict:
     """Send an email through SMTP.
 
     Required env vars: SMTP_HOST, SMTP_USER, SMTP_PASSWORD, EMAIL_TO.
     Optional env vars: SMTP_PORT, SMTP_USE_SSL, EMAIL_FROM.
+    Returns a dict of recipients refused by the SMTP server.
     """
 
     missing = validate_email_env()
     if missing:
         raise RuntimeError("缺少邮件环境变量：" + ", ".join(missing))
 
-    smtp_host = os.environ["SMTP_HOST"]
-    smtp_port = int(os.getenv("SMTP_PORT", "465"))
-    smtp_user = os.environ["SMTP_USER"]
+    smtp_host = os.environ["SMTP_HOST"].strip()
+    smtp_port = int(os.getenv("SMTP_PORT") or "465")
+    smtp_user = os.environ["SMTP_USER"].strip()
     smtp_password = os.environ["SMTP_PASSWORD"]
-    email_from = os.getenv("EMAIL_FROM", smtp_user)
-    email_to = os.environ["EMAIL_TO"]
+    email_from = (os.getenv("EMAIL_FROM") or smtp_user).strip()
+    email_to = os.environ["EMAIL_TO"].strip()
     use_ssl = os.getenv("SMTP_USE_SSL", "true").lower() not in {"0", "false", "no"}
+
+    print(f"邮件诊断：SMTP_HOST 已配置，端口 {smtp_port}，SSL={use_ssl}")
+    print(f"邮件诊断：发件人 {mask_email(email_from)}，收件人 {mask_email(email_to)}")
 
     message = EmailMessage()
     message["Subject"] = subject
@@ -134,9 +151,9 @@ def send_email(subject: str, body: str, attachments: Iterable[str | Path] | None
     if use_ssl:
         with smtplib.SMTP_SSL(smtp_host, smtp_port) as server:
             server.login(smtp_user, smtp_password)
-            server.send_message(message)
-    else:
-        with smtplib.SMTP(smtp_host, smtp_port) as server:
-            server.starttls()
-            server.login(smtp_user, smtp_password)
-            server.send_message(message)
+            return server.send_message(message)
+
+    with smtplib.SMTP(smtp_host, smtp_port) as server:
+        server.starttls()
+        server.login(smtp_user, smtp_password)
+        return server.send_message(message)
